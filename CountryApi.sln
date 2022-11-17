@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Country.Api", "Country.Api", "{023AF4EA-3E31-4397-9945-3344D1DD699B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Country.Api", "Country.Api\Country.Api.csproj", "{4E5EFA44-8982-4EA4-81D7-D67F81365305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Country.Api", "Country.Api\Country.Api.csproj", "{4E5EFA44-8982-4EA4-81D7-D67F81365305}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

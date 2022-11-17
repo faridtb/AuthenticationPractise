@@ -32,12 +32,14 @@ namespace Country.Api.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromQuery] UserCreateDto userCreateDto)
         {
-            UserCreateValidator validator = new();
-            var validResult = validator.Validate(userCreateDto);
+            // Releasede achmaq sureti ile
+            //UserCreateValidator validator = new();
+            //var validResult = validator.Validate(userCreateDto);
 
-            if (!validResult.IsValid) return BadRequest(validResult.Errors);
+            //if (!validResult.IsValid) return BadRequest(validResult.Errors);
 
-            if (userCreateDto.Password != userCreateDto.RepeatePassword) return BadRequest("Passwords didn't match");
+            if (userCreateDto.Password != userCreateDto.RepeatePassword) 
+                return BadRequest("Passwords didn't match");
 
             using var hmac = new HMACSHA512();
             User newUser = new()
@@ -55,14 +57,13 @@ namespace Country.Api.Controllers
                 ActivationPass = RandomString()
             };
 
-            bool isSuccess = await identityRepository.AddAsync(newUser);
+            GeneralResponse response = await identityRepository.AddAsync(newUser);
 
-            if (isSuccess == false)
-            {
-                return BadRequest("Username already taken");
-            }
+            if (response.IsSucceed == false)
+                return BadRequest(response.Message);
+            
 
-            emailService.SendEmail(new MailBodyDto {
+            bool send = emailService.SendEmail(new MailBodyDto {
                 Email = userCreateDto.Email,
                 Content = "<!DOCTYPE html>" +
                                      "<html> " +
@@ -75,6 +76,9 @@ namespace Country.Api.Controllers
                 Code = QrCodeGenerator(newUser.ActivationPass),
                 
             });
+
+            if (!send)
+                return BadRequest("Email can't send to adress :(");
 
             return Ok($"User Created,\nActivation Code sended via QR Code to email:{newUser.Email}");
         }
@@ -108,6 +112,40 @@ namespace Country.Api.Controllers
         public async Task<List<User>> GetAll()
         {
             return await identityRepository.GetAllAsync();
+        }
+
+        [HttpGet("users/{id}")]
+        public async Task<User> GetOne(Guid id)
+        {
+            return await identityRepository.GetByIdAsync(id);
+        }
+
+        [HttpDelete("users/{id}")]
+        public async Task<GeneralResponse> Delete(Guid id)
+        {
+            return await identityRepository.RemoveAsync(id);
+        }
+
+        [HttpPut("user/update/{id}")]
+        public async Task<GeneralResponse> Update(Guid id, UserUpdateDto update)
+        {
+            User dbUser = await identityRepository.GetByIdAsync(id);
+
+            if (dbUser is null)
+                return new GeneralResponse { IsSucceed = false, Message = "User didn't exist" };
+
+            using var hmac = new HMACSHA512();
+
+            dbUser.Email = update.Email;
+            dbUser.Username = update.Username;
+            dbUser.Name = update.Name ?? dbUser.Name;
+            dbUser.Surname = update.Surname ?? dbUser.Surname;
+            dbUser.Gender = update.Gender ?? dbUser.Gender;
+            dbUser.PasswordHash = update.Password != null ? hmac.ComputeHash(Encoding.UTF8.GetBytes(update.Password)) : dbUser.PasswordHash;
+            dbUser.PasswordSalt = update.Password != null ? hmac.Key : dbUser.PasswordHash;
+            dbUser.LastModifiedDate = DateTime.Now;
+
+            return await identityRepository.UpdateAsync(dbUser);
         }
 
         private string QrCodeGenerator(string password)

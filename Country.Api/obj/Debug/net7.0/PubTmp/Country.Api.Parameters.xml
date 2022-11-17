@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="faradheus-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\User\\Desktop\\CountryApi\\Country\.Api\\obj\\Debug\\net7\.0\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="Country.Api.Data.AppDbContext" description="" value="Server=SQL5102.site4now.net;Database=db_a8fc74_faraddb;User=db_a8fc74_faraddb_admin;Password=F@R1di23;" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\User\\Desktop\\CountryApi\\Country\.Api\\obj\\Debug\\net7\.0\\PubTmp\\EFSQLScripts\\Country\.Api\.Data\.AppDbContext\.sql$" />
+  </parameter>
+</parameters>

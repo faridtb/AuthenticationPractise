@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\User\Desktop\CountryApi\Country.Api\obj\Debug\net7.0\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\User\Desktop\CountryApi\Country.Api\obj\Debug\net7.0\PubTmp\EFSQLScripts\Country.Api.Data.AppDbContext.sql" />
+</sitemanifest>
