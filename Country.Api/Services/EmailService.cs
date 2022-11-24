@@ -33,7 +33,7 @@ namespace Country.Api.Services
 
 
             SmtpClient client = new SmtpClient();
-            client.Credentials = new System.Net.NetworkCredential("adrenalinhospital@gmail.com", "odioogqpwsquwcii");
+            client.Credentials = new System.Net.NetworkCredential("adrenalinhospital@gmail.com", "ffvjrygbmgctlgte");
             client.Host = "smtp.gmail.com";
             client.EnableSsl = true;
             client.Port = 587;

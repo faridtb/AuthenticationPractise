@@ -80,7 +80,7 @@ namespace Country.Api.Controllers
             if (!send)
                 return BadRequest("Email can't send to adress :(");
 
-            return Ok($"User Created,\nActivation Code sended via QR Code to email:{newUser.Email}");
+            return Ok($"User Created,\nActivation Code sended via QR Code to email:{newUser.Email}\nUser ID:{newUser.Id}");
         }
 
         [HttpPost("login")]

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\CountryApi\\Country.Api\\Country.Api.csproj": {}
+    "C:\\Users\\User\\Desktop\\P322\\FreeWorks\\CountryApi\\Country.Api\\Country.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\CountryApi\\Country.Api\\Country.Api.csproj": {
+    "C:\\Users\\User\\Desktop\\P322\\FreeWorks\\CountryApi\\Country.Api\\Country.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\CountryApi\\Country.Api\\Country.Api.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\P322\\FreeWorks\\CountryApi\\Country.Api\\Country.Api.csproj",
         "projectName": "Country.Api",
-        "projectPath": "C:\\Users\\User\\Desktop\\CountryApi\\Country.Api\\Country.Api.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\P322\\FreeWorks\\CountryApi\\Country.Api\\Country.Api.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\CountryApi\\Country.Api\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\P322\\FreeWorks\\CountryApi\\Country.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
